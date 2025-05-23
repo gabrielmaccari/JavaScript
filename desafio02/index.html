@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de idade</title>
+    <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            background-color: rgb(51, 94, 158);
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+        }
+        h1 {
+            text-align: center;
+            color: white;
+        }
+        .container {
+            background-color: white;
+            margin: auto;
+            width: 600px;
+            height: auto;
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        p {
+            padding: 10px;
+            padding-bottom: 0px;
+        }
+        img {
+            height: 150px;
+            width: 150px;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        #resultado {
+            text-align: center;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Verificador de idade</h1>
+    <div class="container">
+        <p>Ano de nascimento: <input type="number" name="ano" id="ano"></p>
+        <p>
+            Sexo:
+            <input type="radio" name="sexo" id="homem" value="Masculino"> Masculino
+            <input type="radio" name="sexo" id="mulher" value="Feminino"> Feminino
+        </p>
+        <p><input type="button" value="Verificar" onclick="script()"></p>
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        function script() {
+            var anoInput = document.getElementById('ano');
+            var anoNascimento = Number(anoInput.value);
+            var agora = new Date();
+            var anoAtual = agora.getFullYear();
+            var idade = anoAtual - anoNascimento;
+
+            var resultado = document.getElementById('resultado');
+            resultado.innerHTML = ''; // Limpa resultados anteriores
+
+            if (anoNascimento == 0 || anoNascimento > anoAtual) {
+                resultado.innerHTML = '<p>Por favor, insira um ano válido.</p>';
+                return;
+            }
+
+            var img = document.createElement("img");
+            var generoTexto = '';
+            var imagemSrc = '';
+
+            if (document.getElementById('homem').checked) {
+                generoTexto = 'uma pessoa do sexo masculino';
+                if (idade < 14) {
+                    imagemSrc = "imagens/meninopequeno.png";
+                } else if (idade < 18) {
+                    imagemSrc = "imagens/adolescente.png";
+                } else if (idade < 30) {
+                    imagemSrc = "imagens/menino.png";
+                } else if (idade < 50) {
+                    imagemSrc = "imagens/homem.png";
+                } else {
+                    imagemSrc = "imagens/idoso.png";
+                }
+            } else if (document.getElementById('mulher').checked) {
+                generoTexto = 'uma pessoa do sexo feminino';
+                if (idade < 14) {
+                    imagemSrc = "imagens/meninapequena.png";
+                } else if (idade < 18) {
+                    imagemSrc = "imagens/adolescenta.png";
+                } else if (idade < 30) {
+                    imagemSrc = "imagens/menina.png";
+                } else if (idade < 50) {
+                    imagemSrc = "imagens/mulher.png";
+                } else {
+                    imagemSrc = "imagens/idosa.png";
+                }
+            } else {
+                resultado.innerHTML = '<p>Por favor, selecione um sexo.</p>';
+                return;
+            }
+
+            img.src = imagemSrc;
+
+            var texto = document.createElement("p");
+            texto.textContent = `Detectamos ${generoTexto} com ${idade} anos.`;
+
+            resultado.appendChild(texto);
+            resultado.appendChild(img);
+        }
+    </script>
+</body>
+</html>

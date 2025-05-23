@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora do dia</title>
+    <link rel="shortcut icon" href="imagens/icon.ico" type="image/x-icon">
+    <style>
+        body{
+            margin: auto;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+            text-align: center;
+            margin: auto;
+            
+        }
+        p#cima {
+            padding-top: 50px;
+        }
+        div {
+            background-color: white;
+            margin: auto;
+            width: 600px;
+            height: 400px;
+            border-radius: 20px;
+        }
+        img {
+            height: 250px;
+            width: 250px;
+            border-radius: 15px; }
+        footer {
+            background-color: black;
+            color: white;
+        }
+        p {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hora do dia</h1>
+    <div>
+        <p id="cima">Agora são <span id="letras"></span>horas</p>
+    </div>
+    <script>
+        var img = document.createElement("img");
+        var agora= new Date();
+        var hora=agora.getHours();
+        hora=19
+        var texto=document.getElementById('letras')
+        texto.innerHTML=(`${hora} `)
+        if (hora<12) {
+             document.body.style.backgroundColor = '#FFD700';
+             img.src = "imagens/manha.png";
+        }
+        else if(hora>12 & hora<18) {
+            document.body.style.backgroundColor = '#166ac9';
+            img.src = "imagens/tarde.png";
+        }
+        else {
+            document.body.style.backgroundColor = '#1e2022';
+            img.src = "imagens/noite.png";
+        }
+        document.querySelector("div").appendChild(img);
+    </script>
+    <footer>
+        <p>Site desenvolvido por GabrielMaccari para o CursoemVídeo</p>
+    </footer>
+</body>
+</html>
