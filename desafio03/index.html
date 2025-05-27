@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vamos contar!</title>
+    <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <main>
+        <h1 id="vamos">Vamos contar</h1>
+        <section>
+            <p>Início <input type="number" name="inicio" id="inicio"></p>
+            <p>Fim <input type="number" name="fim" id="fim"></p>
+            <p>Passo <input type="number" name="passo" id="passo"></p>
+            <p><input type="button" value="Contar" onclick="faz()"></p>
+            <div id="res"></div>
+        </section>
+    </main>
+    <script>
+        function faz() {
+        var inicio=window.document.getElementById('inicio')
+        var fim=window.document.getElementById('fim')
+        var passo=window.document.getElementById('passo')
+        var resolucao=window.document.getElementById('res')
+        var ini=Number(inicio.value)
+        var f=Number(fim.value)
+        var p=Number(passo.value)
+        resolucao.innerHTML=''
+
+        if (inicio.value.length===0 || fim.value.length===0 || passo.value.length===0) {
+            resolucao.innerHTML='Impossível contar, faltam dados!'
+            return
+        }
+        if (p===0) {
+            window.alert('Passo inválido! Considerando passo 1')
+            p=1
+        } 
+        if (f>ini) {
+            for (; ini <= f; ini += p) {
+                res.innerHTML += `${ini} 👉 `
+            }
+        }
+        else {
+            for (; ini >= f; ini -= p) {
+                res.innerHTML += `${ini} 👉 `
+        }
+        }
+        res.innerHTML += '🏁'
+    }
+    </script>
+</body>
+</html>

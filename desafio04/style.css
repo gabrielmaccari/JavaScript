@@ -1,0 +1,23 @@
+body {
+    background-color: rgb(45, 122, 167);
+    font-family: Arial, Helvetica, sans-serif;
+}
+section {
+    background-color: white;
+    border-radius: 15px;
+    width: 650px;
+    height: 400px;
+    margin: auto;
+}
+h1#tab {
+    text-align: center;
+    color: white;
+}
+p {
+    padding: 20px;
+}
+div {
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+}

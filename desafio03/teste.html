@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vamos contar!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <h1>Vamos contar</h1>
+        <section>
+            <p>Início <input type="number" id="inicio"></p>
+            <p>Fim <input type="number" id="fim"></p>
+            <p>Passo <input type="number" id="passo"></p>
+            <p><input type="button" value="Contar" onclick="faz()"></p>
+            <div id="res"></div>
+        </section>
+    </main>
+
+    <script>
+        function faz() {
+            let inicio = document.getElementById('inicio')
+            let fim = document.getElementById('fim')
+            let passo = document.getElementById('passo')
+            let res = document.getElementById('res')
+
+            // Verifica se algum campo está vazio
+            if (!inicio.value || !fim.value || !passo.value) {
+                res.innerHTML = 'Impossível contar! Faltam dados.'
+                return
+            }
+
+            let ini = Number(inicio.value)
+            let f = Number(fim.value)
+            let p = Number(passo.value)
+
+            if (p <= 0) {
+                alert('Passo inválido! Considerando PASSO 1')
+                p = 1
+            }
+
+            res.innerHTML = 'Contando: <br>'
+
+            if (ini < f) {
+                // Contagem crescente
+                for (let c = ini; c <= f; c += p) {
+                    res.innerHTML += `${c} 👉 `
+                }
+            } else {
+                // Contagem decrescente
+                for (let c = ini; c >= f; c -= p) {
+                    res.innerHTML += `${c} 👉 `
+                }
+            }
+            res.innerHTML += '🏁'
+        }
+    </script>
+</body>
+</html>

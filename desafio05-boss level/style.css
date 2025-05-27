@@ -1,0 +1,36 @@
+
+body {
+    background-color: #9227E0;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-weight: bold;
+}
+section {
+    color: rgb(255, 255, 255);
+    margin: auto;
+    background-color: #332E36;
+    width: 650px;
+    height: 620px;
+    border-radius: 15px;
+}
+h1 {
+    text-align: center;
+    color: #000000;
+    font-weight: bolder;
+    font-style: oblique;
+}
+p {
+    padding: 10px;
+}
+p.class {
+    padding: 5px;
+}
+select {
+    padding: 10px;
+    background-color: #843DB6;
+}
+input {
+    padding: 10px;
+    text-decoration: double;
+}
